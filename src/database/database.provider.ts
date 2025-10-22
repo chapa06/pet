@@ -30,10 +30,7 @@ export const databaseProviders: Provider[] = [
           logging: true,
           connectTimeoutMS: 10000,
         });
-
-        logger.log('🔄 Initializing database connection...');
         const connection = await dataSource.initialize();
-        logger.log('✅ Database connected successfully');
         return connection;
       } catch (error) {
         logger.error(`Error message: ${error.message}`);
