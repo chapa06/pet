@@ -17,9 +17,6 @@ export const databaseProviders: Provider[] = [
         const password = configService.get('DB_PASSWORD') || 'password';
         const database = configService.get('DB_NAME') || 'pet_db';
 
-        logger.log(`🔄 Attempting database connection to: ${host}:${port}`);
-        logger.log(`📁 Database: ${database}, User: ${username}`);
-
         const dataSource = new DataSource({
           type: 'postgres',
           host,
@@ -39,8 +36,6 @@ export const databaseProviders: Provider[] = [
         logger.log('✅ Database connected successfully');
         return connection;
       } catch (error) {
-        logger.error('❌ Database connection failed:');
-        logger.error(`Error code: ${error.code || 'N/A'}`);
         logger.error(`Error message: ${error.message}`);
         logger.error(`Full error: ${JSON.stringify(error, Object.getOwnPropertyNames(error), 2)}`);
         throw error;
